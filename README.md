@@ -2,7 +2,6 @@
 
 Physics-Informed Neural Networks for Battery State-of-Health Prediction
 
-This code accompanies the paper: [Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis](https://www.nature.com/articles/s41467-024-48779-z) (Nature Communications, 2024)
 
 ## Overview
 
@@ -92,6 +91,11 @@ Raw data sources:
 - MIT: https://data.matr.io/1/projects/5c48dd2bc625d700019f3204
 
 Preprocessing code: https://github.com/wang-fujin/Battery-dataset-preprocessing-code-library
+
+
+## Acknowledgement
+
+This code is built on top of the work : [Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis](https://www.nature.com/articles/s41467-024-48779-z) (Nature Communications, 2024). We acknowledge and thank the corresponding authors.
 
 ## Citation
 
