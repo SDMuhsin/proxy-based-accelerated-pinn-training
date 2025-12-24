@@ -95,15 +95,4 @@ Preprocessing code: https://github.com/wang-fujin/Battery-dataset-preprocessing-
 
 ## Citation
 
-```bibtex
-@article{wang2024physics,
-  title={Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis},
-  author={Wang, Fujin and Zhai, Zhi and Zhao, Zhibin and Di, Yi and Chen, Xuefeng},
-  journal={Nature Communications},
-  volume={15},
-  number={1},
-  pages={4332},
-  year={2024},
-  publisher={Nature Publishing Group UK London}
-}
-```
+Please contact ckp908@usask.ca for citation, this work is currently under review.
