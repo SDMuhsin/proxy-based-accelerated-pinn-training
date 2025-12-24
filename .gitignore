@@ -1,0 +1,106 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific - Documentation
+llmdocs/
+paper/
+*.md
+!README.md
+
+# Project specific - Large files
+battery_dataset.zip
+*.zip
+*.tar.gz
+*.tar
+*.7z
+
+# Project specific - Data
+data/
+raw_data/
+Battery-dataset-preprocessing-code-library/
+data\ analysis/
+
+# Project specific - Results and cache
+results/
+results\ analysis/
+cache/
+temp_check/
+logs/
+*.log
+
+# Project specific - Model files (keep pretrained model folder via exception)
+*.pth
+*.pt
+*.ckpt
+*.h5
+!pretrained model/*.pth
+
+# Project specific - Images (large)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.pdf
+
+# Project specific - Numpy arrays
+*.npy
+*.npz
+
+# Project specific - AI/LLM related
+.claude/
+.cursor/
+.aider*
+.continue/
+
+# Project specific - Generated files
+*.pyc
+*.pyo
+*.pkl
+*.pickle
+
+pretrained_models/
+src/PINNacle
