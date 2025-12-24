@@ -1,30 +1,21 @@
 # Frozen Physics Proxies for Accelerating Cross-Chemistry Battery State-of-Health Transfer Learning
 
-Physics-Informed Neural Networks for Battery State-of-Health Prediction
-
+Code for the paper under review at Applied Intelligence (Springer).
 
 ## Overview
 
-PINN4SOH implements a two-stage training approach:
-1. **Pretraining**: Learn general battery degradation patterns from large datasets
-2. **Fine-tuning**: Transfer knowledge to new battery domains with minimal target data
+Battery state-of-health prediction across different chemistries requires efficient transfer learning methods. Physics-informed neural networks improve accuracy by encoding degradation dynamics as differential equation constraints, but require expensive automatic differentiation during adaptation.
 
-The physics-informed approach incorporates PDE residual constraints and monotonicity constraints for physically realistic predictions.
+We investigate whether frozen physics networks trained on source domains can serve as effective regularizers during transfer learning when evaluated using finite difference approximations rather than exact derivatives.
 
-## Project Structure
+## Key Findings
 
-```
-PINN4SOH/
-├── src/                    # Source code
-│   ├── models.py           # PINN architecture
-│   ├── data_loaders.py     # Dataset loaders
-│   └── train_pretrain.py   # Pretraining script
-├── data/                   # Preprocessed datasets
-├── pretrained model/       # Pretrained model weights
-├── dataloader/             # Data loading utilities
-├── utils/                  # Utility functions
-└── requirements.txt        # Python dependencies
-```
+Through 24 experiments across three lithium-ion chemistries (NCM, NCA, LFP):
+
+1. Finite difference approximations achieve 1.3-2.1x training speedup
+2. Simple forward differences match higher-order Richardson extrapolation because stochastic gradient noise dominates approximation error
+3. Target dataset size is the primary predictor of effectiveness (r=-0.891, p=0.017)
+4. Physics constraints provide 5-10x accuracy improvements over data-driven methods even when approximately evaluated
 
 ## Requirements
 
@@ -38,11 +29,8 @@ PINN4SOH/
 ## Installation
 
 ```bash
-# Create virtual environment
 python3 -m venv env
 source env/bin/activate
-
-# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -50,53 +38,31 @@ pip install -r requirements.txt
 
 ### Pretraining
 
-Train a PINN model on a specific dataset:
-
 ```bash
-# Train on XJTU dataset (batch 0 = 2C charge rate)
 python3 src/train_pretrain.py --dataset XJTU --batch 0
-
-# Train on MIT dataset
 python3 src/train_pretrain.py --dataset MIT --batch 1
-
-# Train on TJU dataset
 python3 src/train_pretrain.py --dataset TJU --batch 1
 ```
 
-Options:
-- `--dataset`: XJTU, MIT, HUST, or TJU
-- `--batch`: Batch index (dataset-specific)
-- `--epochs`: Number of training epochs (default: 200)
+### Transfer Learning with Physics Proxy
 
-### Output
-
-Training outputs are saved to `results/{dataset}_batch{batch}/`:
-- `model.pth`: Trained model weights
-- `true_label.npy`: Ground truth SOH values
-- `pred_label.npy`: Predicted SOH values
-- `logging.txt`: Training log
+```bash
+python3 src/physics_approximation_strategies.py
+```
 
 ## Datasets
 
-Preprocessed data for 387 batteries is included in `./data/`:
-- XJTU: 55 NCM batteries
-- MIT: 125 LFP batteries
-- HUST: 77 batteries
-- TJU: 130 NCA/NCM batteries
+This work uses four public battery datasets:
 
-Raw data sources:
-- XJTU: https://wang-fujin.github.io/
-- TJU: https://zenodo.org/record/6405084
-- HUST: https://data.mendeley.com/datasets/nsc7hnsg4s/2
-- MIT: https://data.matr.io/1/projects/5c48dd2bc625d700019f3204
+- XJTU (55 NCM batteries): https://wang-fujin.github.io/
+- MIT (125 LFP batteries): https://data.matr.io/1/projects/5c48dd2bc625d700019f3204
+- TJU (130 NCA/NCM batteries): https://zenodo.org/record/6405084
+- HUST (77 batteries): https://data.mendeley.com/datasets/nsc7hnsg4s/2
 
-Preprocessing code: https://github.com/wang-fujin/Battery-dataset-preprocessing-code-library
+## Acknowledgment
 
-
-## Acknowledgement
-
-This code is built on top of the work : [Physics-informed neural network for lithium-ion battery degradation stable modeling and prognosis](https://www.nature.com/articles/s41467-024-48779-z) (Nature Communications, 2024). We acknowledge and thank the corresponding authors.
+This code builds on the PINN4SOH framework from Wang et al. (Nature Communications, 2024).
 
 ## Citation
 
-Please contact ckp908@usask.ca for citation, this work is currently under review.
+Please contact ckp908@usask.ca for citation. This work is currently under review.
