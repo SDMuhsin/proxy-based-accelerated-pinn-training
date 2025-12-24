@@ -1,4 +1,4 @@
-# PINN4SOH
+# Frozen Physics Proxies for Accelerating Cross-Chemistry Battery State-of-Health Transfer Learning
 
 Physics-Informed Neural Networks for Battery State-of-Health Prediction
 
